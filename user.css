@@ -1,12 +1,78 @@
-/* sacado de internet!! para achicar el tamaño del carrusel */
-/* Carousel tiene height puesto en .carousel y .carousel-inner > .item > img. */
-.carousel, .carousel-inner > .item > img {
-    height: 10%;
+*{
+    padding: 0%;
+    margin: 0%;
 }
-/* con carousel-inner img para darle tamaño a la imagen y carousel-inner para darle tamaño al carousel  */
-.carousel-inner img {
-    max-height: 400px;
+/* encabezado */
+header{
+    background-color: rgb(124, 187, 189);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    text-align: right;
 }
-.carousel-inner{
-    height: 400px;
+header a{
+    color: #fff;
+    text-decoration: none;
+    padding-left: 5%;
+
+}
+
+/* navegador */
+nav{
+    background-color: cadetblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    padding-bottom: 0.4%;
+}
+nav a{
+    color: #fff;
+    text-decoration: none;
+    padding-left: 4%;
+}
+#logo{
+    font-size: 30px;
+    
+}
+form{
+    display: inline-flex;
+}
+.btn{
+    color: #fff;
+    background-color: rgb(81, 170, 141);
+    border-color: aqua;
+}
+
+/* section */
+section{
+    text-align: center;
+}
+section h1{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: cadetblue;
+    font-size: 50px;
+    padding: 5%;
+}
+section p{
+    color: cadetblue;
+    font-size: 25px;
+}
+img{
+    display: inline;
+    width: 500px;
+}
+
+/* footer */
+footer{
+    background-color: cadetblue;
+    padding-bottom: 1%;
+}
+footer h1{
+    color: #fff;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: 30px;
+    text-align: center;
+}
+.formulario{
+    display: grid;
+    padding: 5%;
 }

@@ -4,157 +4,107 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuario</title>
-    <link rel="stylesheet" href="user.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="productos.html">
+    <link rel="stylesheet" href="index.html">
+    <link rel="stylesheet" href="admin.html">
+    <link rel="stylesheet" href="user.css">
+    <title>AnimalShop</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-success">
-        <div class="container"><!--AQUI ES PARA DARLE UN CONTAINER AL NAVEGADOR-->
-            <a class="navbar-brand text-light" href="#">AnimalShop</a><!--TITULO O LOGO PARA DE LA EMPRESA-->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span><!--AQUI ES PARA MOSTRAR LA HAMBURGUESA-->
-            </button>
-            <form class="d-flex col-5"> <!--AQUI ES PARA QUE ESTE EN UNA SOLA LINEA Y NO POR DEBAJO Y LE DAMOS LA COLUMNA DEL INPUT-->
-              <input class="form-control me-2" type="search" placeholder="Nombre Producto" aria-label="Search">
-              <button class="btn btn-outline-light" type="button">Buscar</button>
-            </form>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent"><!--AQUI ES PARA LOS LINKS DE REGISTRAR Y INICIAR-->
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link text-light mt-2" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Cerrar Sesion</a></li><!--AQUI ES PARA Cerrar sesion y EN EL MODAL confirmas -->
-                <li class="nav-item"><a class="nav-link text-light" href="" data-bs-toggle="modal" data-bs-target="#exampleModal1"><button class="btn btn-success">Suscribete</button></a></li><!--AQUI ES PARA suscribirse y EN EL MODAL confirmas -->
-                <!--AQUI ES PARA DARLE UN MODAL Y ICONO AL CARRITO DE COMPRAS-->
-                <li class="nav-item"><a class="nav-link text-light" href="#"><button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16"><path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/></svg></button></a></li>
-              </ul>
-            </div>
-        </div>
-    </nav>
-    <!--carrusel-->
-    <div class="container">
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="http://www.mascotahogar.com/1920x1080/fondos-de-perros-labradores.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="https://s1.1zoom.me/b4542/829/Dogs_Run_Bokeh_Jack_Russell_terrier_571695_1920x1080.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="https://www.fondoshd.mx/descargar.php?id=546&resolucion=1920x1080" class="d-block w-100" alt="...">
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
-      <!--Cards de compras-->
-      <div class="container">
+    <header>
         <div class="container">
-          <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
-            <div class="col">
-              <div class="card">
-                <img src="https://falabella.scene7.com/is/image/Falabella/7439332_1?wid=240&hei=240&qlt=70" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Correa para perros</h5>
-                  <p class="card-text">$5.990</p>
-                  <button class="btn btn-outline-success col-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16"><path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/></svg></button>
-                </div>
-              </div>  
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="https://falabella.scene7.com/is/image/Falabella/7439332_1?wid=240&hei=240&qlt=70" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Correa para perros</h5>
-                  <p class="card-text">$5.990</p>
-                  <button class="btn btn-outline-success col-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16"><path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/></svg></button>
-                </div>
-              </div>  
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="https://falabella.scene7.com/is/image/Falabella/7439332_1?wid=240&hei=240&qlt=70" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Correa para perros</h5>
-                  <p class="card-text">$5.990</p>
-                  <button class="btn btn-outline-success col-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16"><path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/></svg></button>
-                </div>
-              </div>  
-            </div>
-          </div>
+            <a href="">SOCIAL</a>
+            <a href="">NOSOTROS</a>
         </div>
-      </div>
-    <!-- Modal de cerar sesion-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    </header>
+    <nav>
+        <div class="container">
+            <a id="logo" class="text-light" href="user.html">AnimalShop</a>
+            <form>
+                <input type="search" name="" id="" placeholder="     Escribe el Producto">
+                <button class="btn" type="submit">Buscar</button>
+            </form>
+            <a href="" data-bs-toggle="modal" data-bs-target="#cerrar-sesion">Cerrar Sesion</a>
+            <a href="" data-bs-toggle="offcanvas" data-bs-target="#carrito" aria-controls="carrito" >Carrito</a>
+        </div>
+        
+    </nav>
+    <section>
+        <div class="container">
+            <h1>Nuestros Productos</h1>
+            <p>Productos AnimalShop calidad siempre y al mejor precio!!!</p>
+            <a href="pdescuentos2.html"><img src="img/descuentos.png" alt=""></a>
+            <a href="" data-bs-toggle="modal" data-bs-target="#suscripcion"><img src="img/suscribete.png" alt=""></a>
+            <a href="productos2.html"><img src="img/animalshop.png" alt=""></a>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <h1>Creado por Jose Romero</h1>
+        </div>
+    </footer>
+
+
+    <!-- Modal de cerrar sesion-->
+    <div class="modal fade" id="cerrar-sesion">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">cerrar sesion</h5><!--titulo del modal-->
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button><!--boton de eliminar el modal-->
+                    <h5>Cerrar Sesion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body"><!--contenido del modal login-->
-                        <h4>¿Quieres Cerrar Sesion?</h4>
-                        <p></p>
+                <div class="modal-body">
+                    <p>¿deseas cerrar sesion?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button><!--Para volver al index-->
-                    <a href="index.html"><button type="button" class="btn btn-success">Cerrar Sesion</button></a><!--Para seguir con el siguiente paso-->
+                    <button type="button" class="btn" data-bs-dismiss="modal">Volver</button>
+                    <a href="index.html"><button type="button" class="btn">cerrar sesion</button></a>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Modal de suscribirse-->
-    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Deseas suscribirte?</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="mb-3 text-start">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"><!--para el correo-->
-                    <div id="emailHelp" class="form-text">Si te suscribes recibiras un descuento por ser miembro</div><!--para el comentario-->
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                  <a href="user.html"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button></a><!--para cancelar-->
-                  <a href="user.html"><button type="button" class="btn btn-success">Suscribirse</button></a><!--para suscribirse-->
-              </div>
+
+    <!-- Modal de suscripcion-->
+    <div class="modal fade" id="suscripcion">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Suscribete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h3>¡¡¡ SUSCRIBETE Y OBTEN UN 15% DE DESCUENTO !!!</h3>
+                    <form class="formulario">
+                        <form class="formulario">
+                            <label>Mail o Rut</label>
+                            <input type="email" id="correo2">
+                        </form>     
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-bs-dismiss="modal">Volver</button>
+                    <a href=""><button type="button" class="btn">suscribirse</button></a>
+                </div>
             </div>
         </div>
     </div>
+
     <!--Modal de carrito de compras-->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas offcanvas-end" id="carrito">
         <div class="offcanvas-header">
             <h5 id="offcanvasRightLabel">Carrito de Compras</h5><!--para el titulo-->
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body"><!--para el body del carrito-->
-            <div class="card mb-3" style="max-width: 540px;"><!--para colocar el producto en card-->
-                <div class="row g-0">
-                    <div class="col-md-3">
-                        <img src="https://falabella.scene7.com/is/image/Falabella/7439332_1?wid=240&hei=240&qlt=70" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Collar Para Perros.</h5>
-                            <p class="card-text">$ 10.490</p>
-                            <form class="d-flex">
-                              <a href=""><button type="button" class="btn btn-danger">Eliminar</button></a><!--para eliminar del carrito-->
-                              <a href=""><button type="button" class="btn btn-success">Comprar</button></a><!--para comprarlo-->
-                            </form>
-                        </div>
+            <div class="col">
+                <div class="card">
+                    <img id="img-card" src="img/juguete.png" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">BAM- BONES DENTAL MANZANA LARGE</h5>
+                        <p class="card-text">Formulación de Bambones con recubrimiento de TPR. Las texturas dobles con protuberancias ayudan</p>
+                        <a href=""><button type="button" class="btn btn-danger">eliminar</button></a><!--para eliminar del carrito-->
+                        <a href=""><button type="button" class="btn btn-success">comprar</button></a><!--para comprarlo-->
                     </div>
                 </div>
             </div>
@@ -162,12 +112,8 @@
     </div>
 
 
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
