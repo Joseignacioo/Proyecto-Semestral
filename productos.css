@@ -59,8 +59,9 @@ section input{
 }
 /* section cards */
 #img-card{
-    padding-left: 2%;
+    padding: 30px;
     width: 250px;
+    height: 250px;
 }
 .formulario{
     display: grid;

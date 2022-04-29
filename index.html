@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="admin.html">
     <link rel="stylesheet" href="user.html">
     <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
     <title>AnimalShop</title>
 </head>
 <body>
@@ -57,19 +58,25 @@
                 <div class="modal-body">
                     <h6>Crear Cuenta</h6>
                     <form class="formulario">
-                        <label>Mail o Rut</label>
-                        <input type="email" id="correo1">
+                        <label>Nombre</label>
+                        <input type="text" class="form-control" id="name" placeholder="Ingrese su nombre" required>
+                        <label>Email</label>
+                        <input type="text" class="form-control" id="email" placeholder="Ingrese su correo" required>
                         <label>Contraseña</label>
-                        <input type="password"  id="contraseña1">        
+                        <input type="text" class="form-control" id="email" placeholder="Ingrese su contraseña" required>
+
                         <label>Acepto recibir información de ofertas y promociones</label>
                         <input type="checkbox"  id="check1">
                         <label>Al registrarte aceptas los Términos y condiciones</label>
                         <input type="checkbox" id="check2">
+                        <div id="liveAlertPlaceholder" class="col-md-4">
+                            <div id="alert"></div>
+                        </div>        
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn" data-bs-dismiss="modal">Volver</button>
-                    <a href="user.html"><button type="button" class="btn">Registrate</button></a>
+                    <button type="button" class="btn btn-success" name="btnConectar" id="btnConectar">Registrarse</button>
                 </div>
             </div>
         </div>
@@ -85,17 +92,17 @@
                 </div>
                 <div class="modal-body">
                     <h6>Iniciar Sesion </h6>
-                    <form class="formulario">
-                        <label>Mail o Rut</label>
-                        <input type="email" id="correo2">
+                    <form class="formulario" method="post" name="myform">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="user" id="user" placeholder="Ingrese Email" required>
                         <label>Contraseña</label>
-                        <input type="password"  id="contraseña2">        
+                        <input type="password" class="form-control" name="pass" id="pass" placeholder="Ingrese contraseña" required>        
                     </form>
-                    <label for="">¿Olvido su contraseña?</label>
+                    <a href="#">¿Olvido su contraseña?</a>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn" data-bs-dismiss="modal">Volver</button>
-                    <a href="admin.html"><button type="button" class="btn">Ingresar</button></a>
+                    <button type="button" id="sumbit" class="btn" onclick="validar()">Ingresar</button>
                 </div>
             </div>
         </div>
@@ -113,17 +120,15 @@
                     <h3>¡¡¡ SUSCRIBETE Y OBTEN UN 15% DE DESCUENTO !!!</h3>
                     <p>TIENES QUE INICIAR SESION PARA SUSCRIBIRTE</p>
                     <form class="formulario">
-                        <form class="formulario">
-                            <label>Mail o Rut</label>
-                            <input type="email" id="correo2">
-                            <label>Contraseña</label>
-                            <input type="password"  id="contraseña2">        
-                        </form>     
+                        <label>Mail o Rut</label>
+                        <input type="text" class="form-control" name="user" id="user" placeholder="Ingrese contraseña" required>
+                        <label>Contraseña</label>
+                        <input type="password" class="form-control" name="pass" id="pass" placeholder="Ingrese contraseña" required>            
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn" data-bs-dismiss="modal">Volver</button>
-                    <a href=""><button type="button" class="btn">suscribirse</button></a>
+                    <button type="button" id="sumbit" class="btn" onclick="validar()">Ingresar</button>
                 </div>
             </div>
         </div>
