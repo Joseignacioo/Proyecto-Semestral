@@ -21,3 +21,19 @@ function validar()
     alert("Verifique sus datos");
     }
 }
+// para  registrar
+function registrar()
+{
+    var nombre = document.getElementById("name").value;
+    var correo = document.getElementById("email").value;
+    var contraseña = document.getElementById("pass1").value;
+
+    if(nombre && correo && contraseña){
+        alert("Registrado correctamente");
+        window.location="user.html";
+        return false;
+    }
+    else{
+        alert("Le falta rellenar algunos campo");
+    }
+}

@@ -144,14 +144,15 @@
                         <label>Nombre</label>
                         <input type="text" class="form-control" id="name" placeholder="Ingrese su nombre" required>
                         <label>Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Ingrese su correo" required>
+                        <input type="text" class="form-control" id="email" placeholder="Ingrese su correo" required>
                         <label>Contraseña</label>
-                        <input type="password" class="form-control" id="pass" placeholder="Ingrese su contraseña" required>
+                        <input type="text" class="form-control" id="pass1" placeholder="Ingrese su contraseña" required>
 
                         <label>Acepto recibir información de ofertas y promociones</label>
                         <input type="checkbox"  id="check1">
                         <label>Al registrarte aceptas los Términos y condiciones</label>
                         <input type="checkbox" id="check2">
+
                         <div id="liveAlertPlaceholder" class="col-md-4">
                             <div id="alert"></div>
                         </div>        
@@ -159,13 +160,13 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn" data-bs-dismiss="modal">Volver</button>
-                    <button type="button" class="btn btn-success" name="btnConectar" id="btnConectar">Registrarse</button>
+                    <button type="button" id="sumbit" class="btn" onclick="registrar()">Ingresar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal de login-->
+   <!-- Modal de login-->
     <div class="modal fade" id="ingresar">
         <div class="modal-dialog">
             <div class="modal-content">
