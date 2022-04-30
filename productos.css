@@ -13,7 +13,6 @@ header a{
     color: #fff;
     text-decoration: none;
     padding-left: 5%;
-
 }
 
 /* navegador */
@@ -30,7 +29,10 @@ nav a{
 }
 #logo{
     font-size: 30px;
-    
+}
+strong{
+    color: rgb(154, 212, 185); 
+    font-family:cursive;
 }
 form{
     display: inline-flex;
@@ -42,25 +44,11 @@ form{
 }
 
 /* section */
-section{
-    text-align: left;
-    float: left;
-    padding: 5%;
-}
-section h1{
-    padding: 3%;
-    font-size: 25px;
-}
-section .container{
-    display: grid;
-}
-section input{
-    font-size: 30px;
-}
+
 /* section cards */
 #img-card{
     padding: 30px;
-    width: 250px;
+    width: 300px;
     height: 250px;
 }
 .formulario{
@@ -68,8 +56,22 @@ section input{
     padding: 5%;
 }
 #titulo{
-    font-size: 50px; 
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
+    font-size: 70px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-align: center;
     color: cadetblue;
+    padding: 5%;
 }
+
+/* footer */
+footer{
+    background-color: cadetblue;
+    padding: 1%;
+}
+footer h1{
+    color: #fff;
+    padding-top: 1%;
+    font-size: 30px;
+    text-align: center;
+}
+

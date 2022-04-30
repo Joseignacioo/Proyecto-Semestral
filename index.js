@@ -6,13 +6,13 @@ function validar()
                             
     if(usuario == "administrador" && password =="admin1234")
     {
-        // alert("Ingreso correctamente precione aceptar para terminar");
+        alert("Ingreso correctamente a su cuenta precione aceptar para terminar");
         window.location="admin.html";
         return false;
     }
     if(usuario == "usuario1@gmail.com" && password == "user1234")
     {
-        // alert("Ingreso correctamente precione aceptar para terminar");
+        alert("Ingreso correctamente precione aceptar para terminar");
         window.location="user.html";
         return false;
     }

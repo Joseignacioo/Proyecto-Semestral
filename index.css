@@ -23,6 +23,10 @@ nav{
     font-size: 20px;
     padding-bottom: 0.4%;
 }
+strong{
+    color: rgb(154, 212, 185); 
+    font-family:cursive;
+}
 nav a{
     color: #fff;
     text-decoration: none;
@@ -38,6 +42,10 @@ form{
 .btn{
     color: #fff;
     background-color: cadetblue;
+}
+.formulario{
+    display: grid;
+    padding: 5%;
 }
 
 /* section */
@@ -83,6 +91,7 @@ img{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: #fff;
 }
+/* social */
 .social{
     margin-top: 5%;
     margin-bottom: 5%;
@@ -109,8 +118,4 @@ footer h1{
     padding-top: 1%;
     font-size: 30px;
     text-align: center;
-}
-.formulario{
-    display: grid;
-    padding: 5%;
 }
