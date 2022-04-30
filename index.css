@@ -37,29 +37,68 @@ form{
 }
 .btn{
     color: #fff;
-    background-color: rgb(81, 170, 141);
-    border-color: aqua;
+    background-color: cadetblue;
 }
 
 /* section */
 section{
     text-align: center;
 }
-section h1{
+/* titulo */
+.titulo{
+    padding: 12%;
+    background-color: rgba(0, 255, 255, 0.144);
+}
+.titulo h1{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: cadetblue;
-    font-size: 50px;
+    font-size: 100px;
+}
+.titulo p{
+    color: cadetblue;
+    font-size: 30px;
+}
+/* imagenes y parrafos */
+.productos{
     padding: 5%;
 }
-section p{
-    color: cadetblue;
-    font-size: 25px;
-}
 img{
-    display: inline;
-    width: 500px;
+    width: 600px;
+    height: 300px;
 }
-
+/* nosotros */
+.nosotros{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 5%;
+    background-color: rgb(136, 205, 207);
+}
+.nosotros p{
+    color: #fff;
+    font-size: 25px;
+    text-align: center;
+}
+.nosotros h1{
+    font-size: 70px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #fff;
+}
+.social{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 5%;
+    background-color: rgb(136, 205, 207);
+}
+.social h1{
+    font-size: 70px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #fff;
+}
+.social a{
+    color: #fff;
+    padding: 3%;
+    text-decoration:none;
+}
 /* footer */
 footer{
     background-color: cadetblue;
@@ -68,7 +107,6 @@ footer{
 footer h1{
     color: #fff;
     padding-top: 1%;
-    padding-bottom: 1%;
     font-size: 30px;
     text-align: center;
 }
