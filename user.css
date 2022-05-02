@@ -27,6 +27,9 @@ strong{
     color: rgb(154, 212, 185); 
     font-family:cursive;
 }
+span{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 nav a{
     color: #fff;
     text-decoration: none;
@@ -63,6 +66,12 @@ section{
     font-size: 30px;
 }
 /* imagenes y parrafos */
+.productos h1{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 3%;
+    color: cadetblue;
+    font-size: 50px;
+}
 .productos{
     padding: 5%;
 }

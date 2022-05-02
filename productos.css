@@ -34,6 +34,9 @@ strong{
     color: rgb(154, 212, 185); 
     font-family:cursive;
 }
+span{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 form{
     display: inline-flex;
 }
