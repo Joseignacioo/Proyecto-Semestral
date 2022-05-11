@@ -1,6 +1,7 @@
 *{
     padding: 0%;
     margin: 0%;
+    font-family: sans-serif;
 }
 /* encabezado */
 header{
@@ -35,6 +36,9 @@ nav a{
     text-decoration: none;
     padding-left: 4%;
 }
+a:hover{
+    color: rgb(182, 231, 202);
+}
 #logo{
     font-size: 30px;
     
@@ -50,10 +54,13 @@ form{
     display: grid;
     padding: 5%;
 }
-/* section */
-section{
-    background-color: rgb(124, 187, 189);
+#despacho{
+    margin: 5%;
 }
+#despacho h1{
+    margin: 3%;
+}
+/* section */
 .section-body{
     padding: 15%;
     background-color: #fff;
@@ -64,9 +71,48 @@ footer{
     background-color: cadetblue;
     padding-bottom: 1%;
 }
-footer h1{
-    color: #fff;
-    padding-top: 1%;
-    font-size: 30px;
+.social{
+    padding: 1%;
     text-align: center;
+}
+.social h5{
+    color: #fff;
+}
+.social a{
+    color: #fff;
+    margin: 1%;
+    text-decoration:none;
+}
+.autor h6{
+    text-align: center;
+}
+.social i{
+    font-size: 40px;
+}
+.direccion{
+    display: flex;
+}
+
+@media (max-width:1500px){
+    .formulario{
+        padding: 10%;
+    }
+}
+@media (max-width:1000px){
+    .formulario{
+        padding: 15%;
+    }
+}
+@media (max-width:800px){
+    .formulario{
+        padding: 20%;
+    }
+}
+@media (max-width:500px){
+    .formulario{
+        padding: 20%;
+    }
+    .table{
+        font-size: 7px;
+    }
 }

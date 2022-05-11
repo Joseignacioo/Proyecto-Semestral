@@ -27,11 +27,32 @@ function registrar()
     var nombre = document.getElementById("name").value;
     var correo = document.getElementById("email").value;
     var contraseña = document.getElementById("pass1").value;
+    var condiciones = document.getElementById("check2").checked;
 
     if(nombre && correo && contraseña){
-        alert("Registrado correctamente");
-        window.location="user.html";
-        return false;
+        if(nombre.length>=6){
+            if(correo.includes("@gmail")||correo.includes("@hotmail")||correo.includes("@outlook")){
+                if(contraseña.length>=6){
+                    if(condiciones){
+                        alert("Registrado correctamente");
+                        window.location="user.html";
+                        return false;
+                    }
+                    else{
+                        alert("Debe aceptar terminos y condiciones")
+                    }
+                }
+                else{
+                    alert("La contraseña debe contener al menos 6 caracteres")
+                }
+            }
+            else{
+                alert("falta el domino de correo")
+            }
+        }
+        else{
+            alert("El nombre debe contener al menos 6 caracteres")
+        }
     }
     else{
         alert("Le falta rellenar algunos campo");
