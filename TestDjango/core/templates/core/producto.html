@@ -12,15 +12,17 @@
         {% for p in productos %}
         <div class="" style="display: inline-flex;">
             <div class="col">
-                <div class="card" style="margin: 4%;">
+                <div class="card" style="margin: 4%; width: 300px; height: 500px;">
                     {% if p.imagen %}
                     <img id="img-card" src="{{ p.imagen.url }}" class="card-img-top" alt="" style="height: 250px;">
                     {% endif %}
                     <div class="card-body">
                         <h5>{{ p.nombre | capfirst }}</h5>
-                        <p>{{ p.descripcion  | capfirst}}</p>
-                        <p style="color: rgb(247, 0, 0);">${{ p.precio | intcomma}}</p>
-                        <button class="btn">AGREGAR</button>
+                        <p style="text-align: left; font-size:14px">{{ p.descripcion  | capfirst}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <p style="color: rgb(247, 0, 0); text-align: right; font-family:cursive;">Normal ${{ p.precio | intcomma}}</p>
+                        <button class="btn ">AGREGAR</button>
                     </div>
                 </div>
             </div>
