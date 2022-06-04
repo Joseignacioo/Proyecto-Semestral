@@ -1,0 +1,145 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+<section>
+    <div class="container">
+        <h1 id="titulo" style="padding: 3%; color: rgb(124, 187, 189);" >DESPACHO ANIMALSHOP</h1>
+        <form class="formulario" id="despacho" style="text-align: left;">
+            <label>Nombre</label>
+            <input type="text" class="form-control" id="name" placeholder="Ingrese su nombre" required >
+            <label>Email</label>
+            <input type="text" class="form-control" id="email" placeholder="Ingrese su correo" required>
+            <label>Telefono</label>
+            <input type="number" class="form-control" id="fono" placeholder="Ingrese su telefono" required>
+            <label>Direccion</label>
+            <input type="text" class="form-control " id="direccion" placeholder="Ingrese su direccion" required>
+            <div class="direccion pt-2">
+                <select id="regiones" class="form-select">
+                    <option active>Seleccione Region</option>
+                </select>
+                <select id="provincia" class="form-select">
+                    <option active>Seleccione Provincia</option>
+                </select>
+                <select id="comunas" class="form-select">
+                    <option active>Seleccione Comuna</option>
+                </select>
+            </div>
+            <div class="col-md-10">
+                <table class="table table-dark table-hover table-responsive" hidden id="tabla1">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Telefono</th>
+                            <th>Direccion</th>
+                            <th>Regione</th>
+                            <th>provincia</th>
+                            <th>comuna</th>
+                        </tr>
+                    </thead>
+                    <tbody name="personajes" id="datos">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="opciones">
+                <button type="button" class="btn btn-success mt-3" name="btnAgregar" id="btnAgregar">Agregar</button>
+                <button type="button" class="btn btn-success mt-3" name="btnListar" id="btnListar">MOSTRAR DATOS</button>
+                <button type="reset"  class="btn btn-warning mt-3" name="btnClean" id="btnClean">CERRAR DATOS</button>
+            </div>
+        </form>
+        
+        <div class="mb-5  ">
+            <a href="index.html" class=""><button type="button" id="envio" class="btn btn-danger">Cancelar</button></a>
+            <button type="button" id="envio" class="btn btn-success" onclick="envio()">Finalizar</button>
+        </div>
+    </div>
+</section>
+<script>
+    $.get("https://apis.digital.gob.cl/dpa/regiones", function (data) {
+        $.each(data, function (i, data) {
+            $("#regiones").append("<option value='" + data.codigo + "'>" + data.nombre + "</option>");
+        });
+    });
+
+    $("#regiones").change(function () {
+        $()
+        $("#provincia").empty();
+        $.get("https://apis.digital.gob.cl/dpa/regiones/" + $("#regiones").val() + "/provincias", function (data) {
+            $.each(data, function (i, data) {
+                $("#provincia").append("<option value='" + data.codigo + "'>" + data.nombre + "</option>");
+            });
+        });
+    });
+
+    $("#provincia").change(function () {
+        $("#comunas").empty();
+        $.get("https://apis.digital.gob.cl/dpa/provincias/" + $("#provincia").val() + "/comunas", function (data) {
+            $.each(data, function (i, data) {
+                $("#comunas").append("<option value='" + data.codigo + "'>" + data.nombre + "</option>");
+            });
+        });
+    });
+</script>
+<script>
+    //Creacion de objeto JSON
+    var lista = [];
+
+    //Agregar
+    $("#btnAgregar").click(function () {
+        //Declaracion y estructura JSON
+        //var personaje <-- nombre variable que usaremos para almacenar el JSON
+        //{} <--- Llave apertura y cierre JSON 
+        // "primer valor" <-- Nombre que asignareoms para el atributo dentro del JSON
+        // : <-- simbolo igual para JSON
+        // "segundo valor" <-- es el valor el atributo dentro del JSON|
+        var datos = {
+            "nombre": "",
+            "email": "",
+            "telefono": "",
+            "direccion": "",
+            "region": "",
+            "provincia":"",
+            "comuna":""
+        }
+
+        datos.nombre = $("#name").val();
+        datos.email = $("#email").val();
+        datos.telefono = $('#fono').val();
+        datos.direccion = $("#direccion").val();
+        datos.region = $("#regiones").val();
+        datos.provincia = $("#provincia").val();
+        datos.comuna = $("#comunas").val();
+        //console.log(datos);
+
+        lista.push(datos);
+    });
+
+    //Listar
+    $("#btnListar").click(function () {
+        $("#tabla1").removeAttr("hidden");
+        $("#datos").empty();
+
+        $.each(lista, function (i, item) {
+            $("#datos").append("<tr><td>" +
+                item.nombre + "</td><td>" +
+                item.email + "</td><td>" +
+                item.telefono + "</td><td>" +
+                item.direccion + "</td><td>" +
+                item.region + "</td><td>" +
+                item.provincia + "</td><td>" +
+                item.comuna + "</td><td>" 
+            );
+            console.log(item);
+        });
+    });
+
+    //Limpiar Formulario
+    $("#btnClean").click(function () {
+        $("#tabla1").prop("hidden", true);
+    });
+</script>
+
+{% endblock %}

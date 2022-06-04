@@ -1,0 +1,27 @@
+<!-- importamos el contenido -->
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+<section>
+    <div class="">
+        <div class="titulo">
+            <h1>TU TIENDA AL MEJOR PRECIO</h1>
+            <p>Productos AnimalShop calidad siempre y al mejor precio!!!</p>
+        </div>
+        <div class="productos">
+            <h1>NUESTRAS CATEGORIAS</h1>
+            <a href="{% url 'producto' %}"><img src="{% static 'core/img/animalshop.png' %}" alt="" class="bx-flashing-hover" style="box-shadow: 0px 0px 10px cadetblue;"></a>
+            <a href="" data-bs-toggle="modal" data-bs-target="#suscripcion"><img src="{% static 'core/img/suscribete.png' %}" alt="" class="bx-flashing-hover" style="box-shadow: 0px 0px 10px cadetblue;"></a>  
+        </div>
+        <div id="1" class="nosotros">
+            <h1 >¿QUIENES SOMOS?</h1>
+            <p>Somos un grupo de jovenes que realizamos una venta de productos para mascotas como bandanas, correas e 
+                identificaciones, todo esto para ayudar a una fundación sin fines de lucro, todo partió a través de las redes 
+                sociales, pero en la actualidad es casi imposible dar abasto a la demanda a través de las redes sociales.
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

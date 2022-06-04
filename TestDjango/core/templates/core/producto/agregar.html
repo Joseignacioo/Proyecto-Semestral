@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+
+
+{% block contenido %}
+
+{% load crispy_forms_tags %}
+
+<div class="container">
+    <h1 id="titulo" style="margin: 3%; color: rgb(124, 187, 189);" >NUEVO PRODUCTO</h1>
+    <form action="" method="post" enctype="multipart/form-data" style="display: grid; padding: 3%;">
+                   
+        {% csrf_token %}
+        {{ form | crispy}}
+        
+        <input type="reset" value="Cancelar" class="btn btn-success col-3">
+        <input type="submit" value="Guardar" class="btn btn-primary col-3">
+    </form>
+    {{mensaje}}
+</div>
+
+{% endblock %}

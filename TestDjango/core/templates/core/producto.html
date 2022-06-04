@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+
+{% load humanize %}
+<section class="cards">
+    <div class="container">
+        <h1 id="titulo" style="padding: 2%; color: rgb(124, 187, 189);" >PRODUCTOS ANIMALSHOP</h1>
+        
+        {% for p in productos %}
+        <div class="" style="display: inline-flex;">
+            <div class="col">
+                <div class="card" style="margin: 4%;">
+                    {% if p.imagen %}
+                    <img id="img-card" src="{{ p.imagen.url }}" class="card-img-top" alt="" style="height: 250px;">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5>{{ p.nombre | capfirst }}</h5>
+                        <p>{{ p.descripcion  | capfirst}}</p>
+                        <p style="color: rgb(247, 0, 0);">${{ p.precio | intcomma}}</p>
+                        <button class="btn">AGREGAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor%}
+    </div>
+</section>
+{% endblock %}
