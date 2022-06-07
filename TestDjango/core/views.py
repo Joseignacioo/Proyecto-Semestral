@@ -1,7 +1,7 @@
 from itertools import product
 from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Producto, Suscripcion
+from .models import Categoria, Producto, Suscripcion
 from .forms import ProductoForm, CustomUserCreationForm, SuscripcionForm
 from django.contrib import messages
 from django.core.paginator import Paginator
@@ -132,3 +132,9 @@ def listar_suscripciones(request):
         'paginator' : paginator
     }
     return render(request, 'core/suscripcion/listar.html', data)
+
+def eliminar_suscripcion(request, id):
+    suscripcion = get_object_or_404(Suscripcion, id = id)
+    suscripcion.delete()
+    messages.success(request, "Eliminado  Correctamente")
+    return redirect(to = "listar_suscripciones")

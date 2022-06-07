@@ -1,4 +1,30 @@
 {% extends 'core/base.html' %}
+
+{% block js %}
+<script>
+    function eliminarSuscripcion(id){
+        Swal.fire({
+            "title" : "¿ESTAS SEGURO?",
+            "text" : "Esta accion no se puede deshacer",
+            "icon" : "question",
+            "showCancelButton":true,
+            "cancelButtonText" : "No, Cancelar",
+            "confirmButtonText" : "Si, Eliminar",
+            "reverseButtons" : true,
+            "confirmButtonColor":"#dc3545"
+            
+
+        })
+        .then(function(result){
+            if(result.isConfirmed){
+                window.location.href = "/eliminar-suscripciones/" + id + "/"
+            }
+        })
+    }
+</script>
+{% endblock %}
+
+
 {% block contenido %}
 {% load crispy_forms_tags %}
 {% load humanize %}
@@ -11,12 +37,19 @@
                 <th>RUT</th>
                 <th>NOMBRE</th>
                 <th>VIGENCIA</th>
+                <th>ELIMINAR</th>
             </tr>
             {% for s in sub %}
             <tr>
                 <td>{{ s.rut }}</td>
                 <td>{{ s.nombre }}</td>
                 <td>{{ s.idCategoria}}</td>
+                <td>
+                    {% if perms.core.delete_producto %}
+
+                    <a href="#" onclick="eliminarSuscripcion({{ s.id }})" class="btn btn-danger btn-sm ">Eliminar</a>
+                    {% endif %}
+                </td>
             </tr>
             {% endfor %}
         </table>
