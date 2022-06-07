@@ -1,8 +1,8 @@
 from itertools import product
 from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Producto
-from .forms import ProductoForm, CustomUserCreationForm
+from .models import Producto, Suscripcion
+from .forms import ProductoForm, CustomUserCreationForm, SuscripcionForm
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.http import Http404
@@ -50,7 +50,7 @@ def listar_productos(request):
     page = request.GET.get('page', 1)
     
     try:
-        paginator = Paginator(productos, 5)
+        paginator = Paginator(productos, 7)
         productos = paginator.page(page)
     except:
         raise Http404
@@ -101,3 +101,34 @@ def registro(request):
         data ['form'] = formulario
         
     return render(request, 'registration/registro.html', data)
+
+def agregar_suscripcion(request):
+    data = {
+        'form': SuscripcionForm()
+    }
+    if request.method == 'POST':
+        formulario = SuscripcionForm(data = request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "Suscrito Correctamente")
+            return redirect(to = "home")
+        else:
+            data["form"] = formulario
+    return render(request, 'core/suscripcion/agregar.html',data)
+
+def listar_suscripciones(request):
+    suscripciones = Suscripcion.objects.all()
+    page = request.GET.get('page', 1)
+    
+    try:
+        paginator = Paginator(suscripciones, 7)
+        suscripciones = paginator.page(page)
+    except:
+        raise Http404
+    
+    
+    data = {
+        'sub': suscripciones,
+        'paginator' : paginator
+    }
+    return render(request, 'core/suscripcion/listar.html', data)

@@ -70,8 +70,7 @@
                 <div class="modal-body">
                     <h3 style="font-family:cursive;">¡¡¡ SUSCRIBETE AYUDANDO A LA FUNDACION Y OBTEN UN 5% DE DESCUENTO !!!</h3>            
                     {% if user.is_authenticated %}
-                        <a href="" class="btn">SUSCRIBETE</a>
-
+                        <a href="{% url 'agregar_suscripcion' %}" class="btn">SUSCRIBETE</a>
                     {% else %}
                     <a href="{% url 'login' %}" style="margin-left: 40%;" class="btn">Iniciar Sesion</a>
                     <a href="{% url 'registro' %}" class="btn">Registrate</a>

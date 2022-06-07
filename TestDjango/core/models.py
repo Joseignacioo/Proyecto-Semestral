@@ -1,4 +1,7 @@
+from cProfile import run
 from distutils.command.upload import upload
+import email
+
 from pyexpat import model
 from django.db import models
 
@@ -6,7 +9,7 @@ from django.db import models
 class Marca(models.Model):
     nombre = models.CharField(max_length=50, verbose_name="Nombre de la Marca | Categoria")
 
-def __str__(self):
+    def __str__(self):
         return self.nombre
 
 class Producto(models.Model):
@@ -17,6 +20,21 @@ class Producto(models.Model):
     fecha_fabricacion = models.DateField()
     imagen = models.ImageField(upload_to = "productos" , null=True)
     marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
+    stock = models.IntegerField(default=0, verbose_name="Stock")
     
     def __str__(self):
         return self.nombre
+
+class Categoria(models.Model):
+    idCategoria = models.CharField(max_length=50, verbose_name="Nombre de la Marca | Categoria")
+    
+    def __str__(self):
+        return self.idCategoria
+    
+class Suscripcion(models.Model):
+    rut = models.CharField(max_length=9)
+    nombre = models.CharField(max_length=50)
+    idCategoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.rut

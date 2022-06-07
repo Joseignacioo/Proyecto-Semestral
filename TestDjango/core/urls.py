@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import eliminar_producto, home, producto, despacho, agregar_producto, listar_productos,\
-                    modificar_producto, eliminar_producto, registro
+                    modificar_producto, eliminar_producto, registro, agregar_suscripcion, listar_suscripciones
 
 urlpatterns = [
     path('', home, name="home"),
@@ -11,4 +11,6 @@ urlpatterns = [
     path('modificar-producto/<id>/', modificar_producto , name="modificar_producto"),
     path('eliminar-producto/<id>/' , eliminar_producto, name="eliminar_producto"),
     path('registro/', registro, name="registro"),
+    path('suscripcion/',agregar_suscripcion, name='agregar_suscripcion'),
+    path('listar-suscripciones',listar_suscripciones,name='listar_suscripciones')
 ]

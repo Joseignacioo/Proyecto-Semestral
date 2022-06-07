@@ -37,6 +37,7 @@
             <tr>
                 <th>NOMBRE</th>
                 <th>PRECIO</th>
+                <th>STOCK</th>
                 <th>¿ES NUEVO?</th>
                 <th>FECHA CREACION</th>
                 <th>MODIFICAR</th>
@@ -46,6 +47,7 @@
             <tr>
                 <td>{{p.nombre | title }}</td>
                 <td>${{p.precio | intcomma }}</td>
+                <td>{{p.stock}}</td>
                 <td>
                     {% if p.nuevo %}
                     SI
@@ -73,30 +75,9 @@
         </div>
     </div>
 </section>
-
 <section>
-    <div class="container">
-        <h1 id="titulo" style="margin: 3%; color: rgb(124, 187, 189);" >LISTADO DE REGISTROS</h1>
-        <table class="table table-striped table-hover table-responsive-sm" style="margin-top: 5%;">
-            <tr>
-                <th>NOMBRE_USUARIO</th>
-                <th>NOMBRES</th>
-                <th>APELLIDOS</th>
-                <th>MODIFICAR</th>
-                <th>ELIMINAR</th>
-            </tr>
-            {% for r in registro %}
-            <tr>
-                <td>{{ r.nombre }}</td>
-                <td>{{ r.first_name }}</td>
-                
-            </tr>
-            {% endfor %}
-        </table>
-        <div>  
-            {% include 'core/paginator.html' %}
-        </div>
-    </div>
+    <h1 id="titulo" style="margin: 3%; color: rgb(124, 187, 189);" >LISTADO DE SUSCRIPCIONES</h1>
+    <a href="{% url 'listar_suscripciones' %}"class="btn btn-success">Ver datos de suscripciones</a>
 </section>
 
 
