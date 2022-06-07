@@ -68,18 +68,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h3>¡¡¡ SUSCRIBETE Y OBTEN UN 15% DE DESCUENTO !!!</h3>
-                    <p>TIENES QUE INICIAR SESION PARA SUSCRIBIRTE</p>
-                    <form class="formulario" method="post" name="myform">
-                        <label>Email</label>
-                        <input type="text" class="form-control" name="user" id="user" placeholder="Ingrese email" required>
-                        <label>Contraseña</label>
-                        <input type="password" class="form-control" name="pass" id="pass" placeholder="Ingrese contraseña" required>            
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn" data-bs-dismiss="modal">Volver</button>
-                    <button type="button" id="sumbit" class="btn" onclick="validar()">Ingresar</button>
+                    <h3 style="font-family:cursive;">¡¡¡ SUSCRIBETE AYUDANDO A LA FUNDACION Y OBTEN UN 5% DE DESCUENTO !!!</h3>            
+                    {% if user.is_authenticated %}
+                        <a href="" class="btn">SUSCRIBETE</a>
+
+                    {% else %}
+                    <a href="{% url 'login' %}" style="margin-left: 40%;" class="btn">Iniciar Sesion</a>
+                    <a href="{% url 'registro' %}" class="btn">Registrate</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
