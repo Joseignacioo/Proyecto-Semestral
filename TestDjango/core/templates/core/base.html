@@ -24,17 +24,18 @@
             <a id="logo" class="text-light" href="{% url 'home' %}"><strong>Animal</strong><span>Shop</span></a>
             
             {% if perms.core.view_producto %}
-            <a href="{% url 'listar_productos' %}" style="margin-left: 30%;">Administrador</a>
-            {% endif %}
-
-            {% if user.is_authenticated %}
-                <a href="#"><i class="bi bi-person-circle"></i> {{ user.username}}</a>
+                <a href="{% url 'listar_productos' %}" style="margin-left: 30%;"><i class="bi bi-person-circle"></i> Administrador {{user.username}}</a>
                 <a href="" data-bs-toggle="modal" data-bs-target="#cerrar-sesion">Cerrar Sesion</a>
             {% else %}
-                <a href="{% url 'login' %}" style="margin-left: 40%;">Iniciar Sesion</a>
-                <a href="{% url 'registro' %}">Registrate</a>
+                {% if user.is_authenticated %}
+                    <a href=""style="margin-left: 40%;"><i class="bi bi-person-circle"></i> {{user.username}}</a>
+                    <a href="" data-bs-toggle="modal" data-bs-target="#cerrar-sesion">Cerrar Sesion</a>
+                {% else %}
+                    <a href="{% url 'login' %}" style="margin-left: 40%;">Iniciar Sesion</a>
+                    <a href="{% url 'registro' %}">Registrate</a>
+                {% endif %}
+                <a href="" data-bs-toggle="offcanvas" data-bs-target="#carrito" aria-controls="carrito" >Carrito</a>
             {% endif %}
-            <a href="" data-bs-toggle="offcanvas" data-bs-target="#carrito" aria-controls="carrito" >Carrito</a>
         </div>
     </nav>
         
@@ -112,7 +113,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>¿Deseas Cerrar Sesion?</p>
+                    <p style="font-size: 30px; font-family: cursive;">@ {{user.username}}</p>
+                    <p style="font-size: 20px">¿Deseas Cerrar Sesion? </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn" data-bs-dismiss="modal">Volver</button>
