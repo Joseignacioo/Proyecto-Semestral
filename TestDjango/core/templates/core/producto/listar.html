@@ -40,7 +40,6 @@
                 <th>¿ES NUEVO?</th>
                 <th>FECHA CREACION</th>
                 <th>MODIFICAR</th>
-                <th>ELIMINAR</th>
             </tr>
             {% for p in entity %}
             <tr>
@@ -57,18 +56,16 @@
                 <td>{{p.fecha_fabricacion}}</td>
                 <td>
                     {% if perms.core.change_producto %}
-                    <a href="{% url 'modificar_producto' p.id %}" class="btn btn-warning btn-sm ">Modificar</a>
+                    <a href="{% url 'modificar_producto' p.id %}" class="btn btn-warning"><i class="bi bi-arrow-repeat"></i></a>
                     {% endif %}
-                </td>
-                <td>
                     {% if perms.core.delete_producto %}
-                    <a href="#" onclick="eliminarProducto({{ p.id }})" class="btn btn-danger btn-sm ">Eliminar</a>
+                    <a href="#" onclick="eliminarProducto({{ p.id }})" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                     {% endif %}
                 </td>
             </tr>
             {% endfor %}
         </table>
-        <a href="{% url 'agregar_producto'  %}" class="btn btn-sm ">Agregar Producto</a>
+        <a href="{% url 'agregar_producto'  %}" class="btn btn-sm ">Agregar Producto +</a>
         <div>  
             {% include 'core/paginator.html' %}
         </div>
