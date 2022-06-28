@@ -1,0 +1,68 @@
+{% extends 'core/base.html' %}
+
+{% block js %}
+    <script>
+        function eliminarConsulta(id){
+            Swal.fire({
+                "title": "¿Estas Seguro?",
+                "text":"esta accion no se puede deshacer",
+                "icon": "question",
+                "showCancelButton": true,
+                "cancelButtonText": "No, Cancelar",
+                "confirmButtonText": "Si, Eliminar",
+                "reverseButtons": true,
+                "confirmButtonColor":"#dc3545"
+            })
+            .then(function(result){
+                if(result.isConfirmed){
+                    window.location.href = "/eliminar-consultas/"+id+"/"
+                }
+            })
+        }
+    </script>
+{% endblock %}
+
+{% block contenido %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+<section>
+    <div class="container">
+        <h1 id="titulo" style="margin: 4%; color: rgb(124, 187, 189);" >LISTADO DESPACHOS</h1>
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-striped table-hover table-responsive-sm">
+                    <tr>
+                        <th>NOMBRE</th>
+                        <th>APELLIDO</th>
+                        <th>CORREO</th>
+                        <th>PRODUCTO</th>
+                        <th>PRECIO</th>
+                        <th>ESTADO</th>
+                        <th>MODIFICAR</th>
+                    </tr>
+                    {% for h in entity %}
+                    <tr>
+                        <td>{{h.nombre | title }}</td>
+                        <td>{{h.apellido  | title}}</td>
+                        <td>{{h.correo }}</td>
+                        <td>CORREA</td>
+                        <td>$5000</td>
+                        <td>{{h.estado}}</td>  
+                        <td>
+                            <a href="{% url 'modificar_despacho' h.id %}" class="btn btn-primary btn-sm"><i class="bi bi-arrow-repeat"></i></a>
+                        </td>  
+                    </tr>
+                    {% endfor %}
+                </table>
+                <div>
+                    {% include 'core/paginator.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

@@ -1,33 +1,35 @@
 {% extends 'core/base.html' %}
-
 {% load static %}
-
 {% block contenido %}
+{% load crispy_forms_tags %}
 <section>
     <div class="container">
-        <div class="" style=" display:inline-flex;margin: 5%;">
-            <div class="col">
-                <div class="card ">
-                    <div class="card-body ">
-                        <h1 id="titulo" style="padding: 3%; color: rgb(124, 187, 189);" >DESPACHO ANIMALSHOP</h1>
-                        <form class="formulario" id="despacho" style="text-align: left;">
-
-                            <select id="regiones" class="form-select">
-                                <option active>Seleccione Region</option>
-                            </select>
-                            <select id="provincia" class="form-select">
-                                <option active>Seleccione Provincia</option>
-                            </select>
-                            <select id="comunas" class="form-select">
-                                <option active>Seleccione Comuna</option>
-                            </select>
-                        </div>
+        <div class="formulario">
+            <div class="card" style="margin-left: 15%;margin-right:15% ;">
+                <h1 id="titulo" style="padding: 3%; color: rgb(124, 187, 189);" >DESPACHO ANIMALSHOP</h1>
+                <hr style="color: black;">
+                <div class="card-body">
+                    <form  class="formulario" id="despacho" action="" method="post" enctype="multipart/form-data" style="text-align: left;margin-left: 15%;margin-right:15% ;">
+                        {% csrf_token %}
+                        {{ form | crispy }}
                         <br>
-                        <div class="mb-5  ">
-                            <a href="index.html" class=""><button type="button" id="envio" class="btn btn-danger">Cancelar</button></a>
-                            <button type="button" id="envio" class="btn btn-success" onclick="envio()">Finalizar</button>
+                        <select id="regiones" class="form-select">
+                            <option active>Seleccione Region</option>
+                        </select>
+                        <select id="provincia" class="form-select">
+                            <option active>Seleccione Provincia</option>
+                        </select>
+                        <select id="comunas" class="form-select">
+                            <option active>Seleccione Comuna</option>
+                        </select>
+                        <br>
+                        <div class="d-flex justify-content-end">
+                            <input type="reset" value="Cancelar" class="btn btn-secondary">
+                            &nbsp;
+                            <button type="submit" class="btn btn-primary">Enviar</button>
                         </div>
-                    </div>
+                    </form>
+                    {{mensaje}}
                 </div>
             </div>
         </div>
@@ -117,5 +119,4 @@
         $("#tabla1").prop("hidden", true);
     });
 </script>
-
 {% endblock %}

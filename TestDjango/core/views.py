@@ -1,8 +1,8 @@
 from itertools import product
 from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Categoria, Producto, Suscripcion
-from .forms import ProductoForm, CustomUserCreationForm, SuscripcionForm
+from .models import Categoria, Producto, Suscripcion, Despacho
+from .forms import ProductoForm, CustomUserCreationForm, SuscripcionForm, DespachoForm,DespachoForm1
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.http import Http404
@@ -22,9 +22,6 @@ def producto(request):
     }
     return render(request, 'core/producto.html', data)
 
-# @login_required
-def despacho(request):
-    return render(request, 'core/despacho.html')
 
 @permission_required('core.add_producto')
 def agregar_producto(request):
@@ -50,7 +47,7 @@ def listar_productos(request):
     page = request.GET.get('page', 1)
     
     try:
-        paginator = Paginator(productos, 7)
+        paginator = Paginator(productos, 4)
         productos = paginator.page(page)
     except:
         raise Http404
@@ -138,3 +135,77 @@ def eliminar_suscripcion(request, id):
     suscripcion.delete()
     messages.success(request, "Eliminado  Correctamente")
     return redirect(to = "listar_suscripciones")
+
+ 
+# @login_required
+def despacho(request):
+    return render(request, 'core/despacho.html')
+
+def agregar_despacho(request):
+    data= {
+        'form' : DespachoForm()
+    }
+    if request.method == 'POST':
+        formulario = DespachoForm(data=request.POST,files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "Producto Comprado")
+            return redirect(to = "home")
+        else:
+            data["form"] = formulario
+            
+    return render(request, 'core/despacho/agregar.html',data)
+
+def listar_despacho(request):
+    despacho = Despacho.objects.all()
+    page = request.GET.get('page', 1)
+    
+    try:
+        paginator = Paginator(despacho, 5)
+        despacho = paginator.page(page)
+    except:
+        raise Http404
+        
+    data = {
+        'entity': despacho,
+        'paginator': paginator
+    }
+    return render(request, 'core/despacho/listar.html',data)
+
+def listar_despacho_usuario(request):
+    despacho = Despacho.objects.all()
+    page = request.GET.get('page', 1)
+    
+    try:
+        paginator = Paginator(despacho, 5)
+        despacho = paginator.page(page)
+    except:
+        raise Http404
+        
+    data = {
+        'entity': despacho,
+        'paginator': paginator
+    }
+    return render(request, 'core/historial.html',data)
+
+def modificar_despacho(request ,  id):
+    despacho = get_object_or_404(Despacho, id = id)
+    data = {
+        'form': DespachoForm1(instance=despacho)
+    }
+    
+    if request.method == 'POST':
+        formulario = DespachoForm1(data=request.POST, instance=despacho, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "Modificado Correctamente")
+            return redirect(to="listar_despacho")
+        data["form"]=formulario
+            
+    return render(request, 'core/despacho/modificar.html',data)
+
+def eliminar_despacho(request, id):
+    consultas = get_object_or_404(Despacho, id=id)
+    consultas.delete()
+    messages.success(request, "Eliminado Correctamente")
+    return redirect(to="listar_despacho")

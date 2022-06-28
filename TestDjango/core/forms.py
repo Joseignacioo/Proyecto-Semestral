@@ -3,7 +3,7 @@ import email
 from email.mime import image
 from tkinter import Widget
 from django import forms
-from .models import Producto, Suscripcion
+from .models import Producto, Suscripcion, Despacho
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .validators import MaxSizeFileValidator
@@ -43,3 +43,15 @@ class SuscripcionForm(forms.ModelForm):
     class Meta:
         model = Suscripcion
         fields = '__all__'
+        
+class DespachoForm(forms.ModelForm):
+    
+    class Meta:
+        model = Despacho
+        fields = ["nombre","apellido","correo","telefono"]
+
+class DespachoForm1(forms.ModelForm):
+    
+    class Meta:
+        model = Despacho
+        fields = ["nombre","apellido","correo","telefono","estado"]

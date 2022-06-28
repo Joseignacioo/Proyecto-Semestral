@@ -38,3 +38,20 @@ class Suscripcion(models.Model):
     
     def __str__(self):
         return self.rut
+
+class Estado(models.Model):
+    nombre = models.CharField(max_length=50, verbose_name="Estado del Despacho")
+    
+    def __str__(self):
+        return self.nombre
+
+class Despacho(models.Model):
+    nombre = models.CharField(max_length=50)
+    apellido = models.CharField(max_length=50)
+    correo = models.EmailField()
+    telefono = models.IntegerField()
+    estado = models.ForeignKey(Estado,null=True,blank=True, on_delete=models.CASCADE)
+    
+    
+    def __str__(self):
+        return self.nombre
