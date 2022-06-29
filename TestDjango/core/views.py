@@ -43,7 +43,7 @@ def producto(request):
     }
     return render(request, 'core/producto.html', data)
 
-
+@login_required
 @permission_required('core.add_producto')
 def agregar_producto(request):
     
@@ -60,6 +60,7 @@ def agregar_producto(request):
             data["form"] = formulario
     
     return render(request, 'core/producto/agregar.html', data)
+@login_required
 @permission_required('core.add_producto')
 def listar_productos(request):
     productos = Producto.objects.all()
@@ -78,6 +79,7 @@ def listar_productos(request):
         'paginator' : paginator
     }
     return render(request, 'core/producto/listar.html',data)
+@login_required
 @permission_required('core.change_producto')
 def modificar_producto(request, id):
     producto = get_object_or_404(Producto, id=id)
@@ -94,6 +96,8 @@ def modificar_producto(request, id):
         data['form'] = formulario
     
     return render(request, 'core/producto/modificar.html', data)
+
+@login_required
 @permission_required('core.delete_producto')
 def eliminar_producto(request, id):
     producto = get_object_or_404(Producto, id = id)
