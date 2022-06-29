@@ -1,7 +1,6 @@
-from itertools import product
 from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Categoria, Producto, Suscripcion, Despacho
+from .models import Producto, Suscripcion, Despacho
 from .forms import ProductoForm, CustomUserCreationForm, SuscripcionForm, DespachoForm,DespachoForm1
 from django.contrib import messages
 from django.core.paginator import Paginator
@@ -9,8 +8,30 @@ from django.http import Http404
 from django.contrib.auth import authenticate, login
 # sirve para  que los  vinculos de las  paginas sin permisos se dirija al login
 from django.contrib.auth.decorators import login_required, permission_required
+from rest_framework import viewsets
+from .serializers import ProductoSerializers, SuscripcionSerializers
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import check_password
+from rest_framework.authtoken.models import Token
 
 # Create your views here.
+
+
+class ProductoViewset(viewsets.ModelViewSet):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializers
+    def get_queryset(self):
+        productos = Producto.objects.all()
+
+        nombre = self.request.GET.get("nombre")
+        if nombre:
+            productos = productos.filter(nombre__contains= nombre) #http://127.0.0.1:8000/api/producto/?nombre=bandana
+        return productos
+   
+class SuscripcionViewset(viewsets.ModelViewSet):
+    queryset = Suscripcion.objects.all()
+    serializer_class = SuscripcionSerializers
+    
 
 def home(request):
     return render(request, 'core/home.html')
@@ -39,7 +60,6 @@ def agregar_producto(request):
             data["form"] = formulario
     
     return render(request, 'core/producto/agregar.html', data)
-
 @permission_required('core.add_producto')
 def listar_productos(request):
     productos = Producto.objects.all()
@@ -58,7 +78,6 @@ def listar_productos(request):
         'paginator' : paginator
     }
     return render(request, 'core/producto/listar.html',data)
-
 @permission_required('core.change_producto')
 def modificar_producto(request, id):
     producto = get_object_or_404(Producto, id=id)
@@ -75,13 +94,13 @@ def modificar_producto(request, id):
         data['form'] = formulario
     
     return render(request, 'core/producto/modificar.html', data)
-
 @permission_required('core.delete_producto')
 def eliminar_producto(request, id):
     producto = get_object_or_404(Producto, id = id)
     producto.delete()
     messages.success(request, "Eliminado  Correctamente")
     return redirect(to = "listar_productos")
+
 
 def registro(request):
     data = {
@@ -99,6 +118,8 @@ def registro(request):
         
     return render(request, 'registration/registro.html', data)
 
+
+@login_required
 def agregar_suscripcion(request):
     data = {
         'form': SuscripcionForm()
@@ -112,7 +133,7 @@ def agregar_suscripcion(request):
         else:
             data["form"] = formulario
     return render(request, 'core/suscripcion/agregar.html',data)
-
+@login_required
 def listar_suscripciones(request):
     suscripciones = Suscripcion.objects.all()
     page = request.GET.get('page', 1)
@@ -129,7 +150,7 @@ def listar_suscripciones(request):
         'paginator' : paginator
     }
     return render(request, 'core/suscripcion/listar.html', data)
-
+@login_required
 def eliminar_suscripcion(request, id):
     suscripcion = get_object_or_404(Suscripcion, id = id)
     suscripcion.delete()
@@ -137,10 +158,10 @@ def eliminar_suscripcion(request, id):
     return redirect(to = "listar_suscripciones")
 
  
-# @login_required
+@login_required
 def despacho(request):
     return render(request, 'core/despacho.html')
-
+@login_required
 def agregar_despacho(request):
     data= {
         'form' : DespachoForm()
@@ -155,7 +176,7 @@ def agregar_despacho(request):
             data["form"] = formulario
             
     return render(request, 'core/despacho/agregar.html',data)
-
+@login_required
 def listar_despacho(request):
     despacho = Despacho.objects.all()
     page = request.GET.get('page', 1)
@@ -171,7 +192,7 @@ def listar_despacho(request):
         'paginator': paginator
     }
     return render(request, 'core/despacho/listar.html',data)
-
+@login_required
 def listar_despacho_usuario(request):
     despacho = Despacho.objects.all()
     page = request.GET.get('page', 1)
@@ -187,7 +208,7 @@ def listar_despacho_usuario(request):
         'paginator': paginator
     }
     return render(request, 'core/historial.html',data)
-
+@login_required
 def modificar_despacho(request ,  id):
     despacho = get_object_or_404(Despacho, id = id)
     data = {
@@ -203,7 +224,7 @@ def modificar_despacho(request ,  id):
         data["form"]=formulario
             
     return render(request, 'core/despacho/modificar.html',data)
-
+@login_required
 def eliminar_despacho(request, id):
     consultas = get_object_or_404(Despacho, id=id)
     consultas.delete()

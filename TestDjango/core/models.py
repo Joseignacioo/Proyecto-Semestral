@@ -36,7 +36,7 @@ class Suscripcion(models.Model):
     nombre = models.CharField(max_length=50)
     idCategoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     
-    def __str__(self):
+    def __str__(self): 
         return self.rut
 
 class Estado(models.Model):

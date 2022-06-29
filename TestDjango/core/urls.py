@@ -1,7 +1,13 @@
-from django.urls import path
-from .views import eliminar_producto, home, producto, despacho, agregar_producto, listar_productos,\
+from django.db import router
+from django.urls import path, include
+from .views import SuscripcionViewset,ProductoViewset, eliminar_producto, home, producto, despacho, agregar_producto, listar_productos,\
                     modificar_producto, eliminar_producto, registro, agregar_suscripcion, listar_suscripciones, eliminar_suscripcion,\
                         agregar_despacho,listar_despacho,listar_despacho_usuario,modificar_despacho,eliminar_despacho
+from rest_framework import routers
+router = routers.DefaultRouter()
+router.register('producto', ProductoViewset)
+router.register('Suscripcion',SuscripcionViewset)
+
 
 urlpatterns = [
     path('', home, name="home"),
@@ -20,4 +26,5 @@ urlpatterns = [
     path('historial/',listar_despacho_usuario,name="listar_despacho_usuario"),
     path('modificar_despacho/<id>/',modificar_despacho,name="modificar_despacho"),
     path('eliminar-despacho/<id>/',eliminar_despacho,name="eliminar_despacho"),
+    path('api/',include(router.urls)),
 ]

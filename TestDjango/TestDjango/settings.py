@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'core',
     'django.contrib.humanize',
     'crispy_forms',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 CRISPY_TEMPLATE_PACK = 'Bootstrap4'
